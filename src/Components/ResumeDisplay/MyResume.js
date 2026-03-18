@@ -3,8 +3,6 @@ import { useSelector } from 'react-redux'
 import {Link} from 'react-router-dom'
 import jsPDF from 'jspdf'
 import Template1 from '../TemplatesComponents/Template1'
-import Template2 from '../TemplatesComponents/Template2'
-import Template3 from '../TemplatesComponents/Template3'
 import Template4 from '../TemplatesComponents/Template4'
 import html2canvas from 'html2canvas'
 import SuccessMessage from './Modal'
@@ -64,10 +62,7 @@ function MyResume() {
                         ?<div><h1>Please select a template!</h1></div>
                         :selectedTemplate === "Template 1"
                         ?<Template1  />
-                        :selectedTemplate === "Template 2"
-                        ?<Template2  />
-                        :selectedTemplate === "Template 3"
-                        ?<Template3  />
+                    
                         :<Template4  />}
                     </div>
                 </div>

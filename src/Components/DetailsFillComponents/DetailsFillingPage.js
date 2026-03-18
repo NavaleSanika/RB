@@ -38,62 +38,92 @@ function DetailsFillingPage() {
       }))
     }
 }
-  
+  const linkStyle = {
+  display: "block",
+  padding: "10px",
+  borderRadius: "8px",
+  textDecoration: "none",
+  color: "#333",
+  fontWeight: "500"
+};
   return (
-    <div>
-      <div className="container text-center" style={{ maxWidth:"1920px",marginTop:"12px",backgroundColor:"#fafafa",}}>
-        <div >
-              <div className='row' style={{minHeight:'100vh'}}>
+    
+  <div style={{ background: "#f5f7fa", minHeight: "100vh", padding: "20px" }}>
 
-                    <div className=" col-lg-3 col-sm-12 col-12 sidebar"  >
-                            <li className="list-item" onClick={onSideNavLinkClick}>
-                              {/* condition is applied to the Link when 'isFormValid'=== true, then the link is active and directs the user to the next page otherwise the link is inactive */}
-                                <Link to = {isFormValid?"/detailsfillingpage/personalinfo":'#'} className='no-text-decoration'>
-                                  Personal Info
-                                </Link>
-                            </li>
-                            <li className=" list-item" onClick={onSideNavLinkClick}>
-                                <Link to = {isFormValid?"/detailsfillingpage/workex":'#'} className='no-text-decoration' style={{fontSize:'inherit'}}>
-                                Work Experience
-                                </Link>
-                            </li>
-                            <li className=" list-item" onClick={onSideNavLinkClick}>
-                                <Link to = {isFormValid?"/detailsfillingpage/education":'#'} className='no-text-decoration'>
-                                  Education
-                                </Link>
-                            </li>
-                            <li className=" list-item" onClick={onSideNavLinkClick}>
-                                <Link to = {isFormValid?"/detailsfillingpage/keyskills":'#'} className='no-text-decoration'>
-                                  Key Skills
-                                </Link>
-                            </li>
+    <div className="container" style={{ maxWidth: "1200px" }}>
+      <div className="row" style={{ minHeight: "100vh" }}>
 
-                    </div>
-                
-                
-                    <div className="content col-lg-9 col-sm-12 col-12" style={{border:"solid grey 2px", boxShadow: "5px 5px 8px 10px #888888"}}>
-                      {/* these are the nested routes of detailsfillingpage, which helps in rendering different component- personalInfo, workEx, education & keySkills , inside detailsfillingpage when the user clicks on next button or navigate through links of sideNavbar */}
-                          <Routes>
-                                    <Route exact path="/personalinfo" 
-                                          element={<PersonalInfo isFormValid={isFormValid} />}>
-                                    </Route>
-                                     <Route exact path="/workex" 
-                                          element={<WorkEx isFormValid={isFormValid}/>}>
-                                    </Route>
-                                    <Route exact path="/education" 
-                                          element={<Education isFormValid={isFormValid}/>}>
-                                    </Route>
-                                    <Route exact path="/keyskills" 
-                                          element={<KeySkills isFormValid={isFormValid}/>}>
-                                    </Route>
-                          </Routes>
-                    </div>
-              </div>
+        {/* Sidebar */}
+        <div className="col-lg-3 col-12 mb-3">
+          <div style={{
+            background: "white",
+            padding: "15px",
+            borderRadius: "12px",
+            boxShadow: "0 4px 10px rgba(0,0,0,0.08)"
+          }}>
+
+            <div style={{ marginBottom: "10px" }} onClick={onSideNavLinkClick}>
+              <Link to={isFormValid ? "/detailsfillingpage/personalinfo" : '#'}
+                style={linkStyle}>
+                Personal Info
+              </Link>
+            </div>
+
+            <div style={{ marginBottom: "10px" }} onClick={onSideNavLinkClick}>
+              <Link to={isFormValid ? "/detailsfillingpage/workex" : '#'}
+                style={linkStyle}>
+                Work Experience
+              </Link>
+            </div>
+
+            <div style={{ marginBottom: "10px" }} onClick={onSideNavLinkClick}>
+              <Link to={isFormValid ? "/detailsfillingpage/education" : '#'}
+                style={linkStyle}>
+                Education
+              </Link>
+            </div>
+
+            <div onClick={onSideNavLinkClick}>
+              <Link to={isFormValid ? "/detailsfillingpage/keyskills" : '#'}
+                style={linkStyle}>
+                Key Skills
+              </Link>
+            </div>
+
+          </div>
         </div>
+
+        {/* Content */}
+        <div className="col-lg-9 col-12">
+          <div style={{
+            background: "white",
+            padding: "20px",
+            borderRadius: "12px",
+            boxShadow: "0 4px 12px rgba(0,0,0,0.08)"
+          }}>
+
+            <Routes>
+              <Route path="/personalinfo"
+                element={<PersonalInfo isFormValid={isFormValid} />} />
+
+              <Route path="/workex"
+                element={<WorkEx isFormValid={isFormValid} />} />
+
+              <Route path="/education"
+                element={<Education isFormValid={isFormValid} />} />
+
+              <Route path="/keyskills"
+                element={<KeySkills isFormValid={isFormValid} />} />
+            </Routes>
+
+          </div>
+        </div>
+
       </div>
     </div>
-    
-  )
+
+  </div>
+)
 }
 
 export default DetailsFillingPage
